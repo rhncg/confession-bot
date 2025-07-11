@@ -11,7 +11,7 @@ class ConfessModal(discord.ui.Modal):
         embed = discord.Embed(
             title="Anonymous Confession",
             description=confession,
-            color=discord.Color.purple()
+            color=discord.Color.dark_teal()
         )
         
         await interaction.channel.send(embed=embed)

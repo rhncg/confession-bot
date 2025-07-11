@@ -12,6 +12,7 @@ async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     
 cogs = [
+    'about',
     'confess'
 ]
 
