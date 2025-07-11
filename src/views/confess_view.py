@@ -15,3 +15,4 @@ class ConfessModal(discord.ui.Modal):
         )
         
         await interaction.channel.send(embed=embed)
+        await interaction.response.send_message(f"Your confession has been sent.", ephemeral=True)
