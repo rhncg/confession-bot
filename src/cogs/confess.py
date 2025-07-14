@@ -7,7 +7,7 @@ class Confess(discord.Cog):
 
     @discord.command()
     async def confess(self, ctx):
-        await ctx.send_modal(ConfessModal(ctx.channel))
-        
+        await ctx.send_modal(ConfessModal())
+
 def setup(bot):
     bot.add_cog(Confess(bot))
