@@ -21,7 +21,7 @@ async def send_confession_embed(self, interaction: discord.Interaction):
             title=f"Anonymous Confession (#{confession_num})",
             color=color_input
         )
-        message_embed.add_field(name="Confession", value="", inline=False)
+        message_embed.add_field(name=confession, value="", inline=False)
         message_embed.add_field(name="",
                                 value=f"(Reply to [Confession #{self.reply_number}]({self.reply_message.jump_url}))",
                                 inline=False)
