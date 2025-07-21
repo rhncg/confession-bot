@@ -1,5 +1,5 @@
 import discord
-from views.confess_view import ConfessModal
+from funcs.send_confession import send_confession
 
 class Confess(discord.Cog):
     def __init__(self, bot):
@@ -7,7 +7,7 @@ class Confess(discord.Cog):
 
     @discord.command()
     async def confess(self, ctx):
-        await ctx.send_modal(ConfessModal())
+        await send_confession(ctx)
 
 def setup(bot):
     bot.add_cog(Confess(bot))
