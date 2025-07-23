@@ -5,7 +5,8 @@ from views.confession_view import ConfessionView
 async def send_confession_embed(self, interaction: discord.Interaction):
     confession = self.children[0].value
     color_input = self.children[1].value.strip()
-    system_message = True if self.children[2].value.lower() == "true" else False if len(self.children) > 2 else False
+    if len(self.children) > 2:
+        system_message = True if self.children[2].value.lower() == "true" else False
 
     if color_input:
         try:
