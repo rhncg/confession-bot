@@ -1,6 +1,6 @@
 import discord
 from funcs.db import add_confession
-from views.reply_view import ConfessionView
+from views.confession_view import ConfessionView
 
 async def send_confession_embed(self, interaction: discord.Interaction):
     confession = self.children[0].value
