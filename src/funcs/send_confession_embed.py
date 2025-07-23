@@ -56,7 +56,7 @@ async def send_confession_embed(self, interaction: discord.Interaction):
 
     if self.reply_message:
         await self.reply_message.reply(embed=message_embed, view=ConfessionView(confession_num))
-        await interaction.response.send_message(f"Your reply has been sent.", ephemeral=True)
+        await interaction.response.send_message(f"Your reply has been sent.", ephemeral=True, delete_after=3)
     else:
         await interaction.channel.send(embed=message_embed, view=ConfessionView(confession_num))
-        await interaction.response.send_message(f"Your confession has been sent.", ephemeral=True)
+        await interaction.response.send_message(f"Your confession has been sent.", ephemeral=True, delete_after=3)
