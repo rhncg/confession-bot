@@ -12,7 +12,7 @@ class ConfessionView(discord.ui.View):
         await send_confession(interaction, reply_message=interaction.message, reply_number=self.confession_num, author_id=interaction.user.id)
     
     @discord.ui.button(label="New Confession", style=discord.ButtonStyle.success)
-    async def new_confession_button_callback(self, interaction):
+    async def new_confession_button_callback(self, button, interaction):
         from funcs.send_confession import send_confession
 
         await send_confession(interaction, reply_message=None, reply_number=None, author_id=interaction.user.id)
