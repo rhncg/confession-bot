@@ -1,6 +1,6 @@
 import discord
 from funcs.db import add_confession
-from views.reply_view import ReplyView
+from views.reply_view import ConfessionView
 
 async def send_confession_embed(self, interaction: discord.Interaction):
     confession = self.children[0].value
@@ -34,8 +34,8 @@ async def send_confession_embed(self, interaction: discord.Interaction):
         message_embed.add_field(name=confession, value="", inline=False)
 
     if self.reply_message:
-        await self.reply_message.reply(embed=message_embed, view=ReplyView(confession_num))
+        await self.reply_message.reply(embed=message_embed, view=ConfessionView(confession_num))
         await interaction.response.send_message(f"Your reply has been sent.", ephemeral=True)
     else:
-        await interaction.channel.send(embed=message_embed, view=ReplyView(confession_num))
+        await interaction.channel.send(embed=message_embed, view=ConfessionView(confession_num))
         await interaction.response.send_message(f"Your confession has been sent.", ephemeral=True)
