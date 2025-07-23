@@ -29,7 +29,7 @@ async def send_confession_embed(self, interaction: discord.Interaction):
                                     inline=False)
         else:
             message_embed = discord.Embed(
-                title="System Message (Confession #{confession_num})",
+                title=f"System Message (Confession #{confession_num})",
                 color=color_input
             )
             message_embed.add_field(name=confession, value="", inline=False)
@@ -45,10 +45,11 @@ async def send_confession_embed(self, interaction: discord.Interaction):
             message_embed.add_field(name=confession, value="", inline=False)
         else:
             message_embed = discord.Embed(
-                title="System Message (Confession #{confession_num})",
+                title=f"System Message (Confession #{confession_num})",
                 color=color_input
             )
             message_embed.add_field(name=confession, value="", inline=False)
+            message_embed.set_footer(text="This is a system message.")
 
     if self.reply_message:
         await self.reply_message.reply(embed=message_embed, view=ConfessionView(confession_num))
