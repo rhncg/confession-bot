@@ -6,7 +6,7 @@ async def send_confession_embed(self, interaction: discord.Interaction):
     confession = self.children[0].value
     color_input = self.children[1].value.strip()
     if len(self.children) > 2:
-        system_message = True if self.children[2].value.lower() == "true" else False
+        system_message = True if self.children[2].value.lower() == "true" or self.children[2].value.lower() == "yes" else False
     else:
         system_message = False
 

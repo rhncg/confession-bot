@@ -12,7 +12,7 @@ class ConfessModal(discord.ui.Modal):
         self.add_item(discord.ui.InputText(label="Color (optional)", placeholder="#11806A", style=discord.InputTextStyle.short, required=False))
 
         if author_id == 1066616669843243048:
-            self.add_item(discord.ui.InputText(label="Send as System Message", style=discord.InputTextStyle.short, required=True))
+            self.add_item(discord.ui.InputText(label="Send as System Message", style=discord.InputTextStyle.short, required=False))
 
     async def callback(self, interaction: discord.Interaction):
         await send_confession_embed(self, interaction)
