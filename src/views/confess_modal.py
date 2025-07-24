@@ -9,6 +9,7 @@ class ConfessModal(discord.ui.Modal):
         self.reply_number = reply_number
         # noinspection PyTypeChecker
         self.add_item(discord.ui.InputText(label="Your Confession", style=discord.InputTextStyle.long, required=True))
+        self.add_item(discord.ui.InputText(label="Image (optional, paste URL)", style=discord.InputTextStyle.short, required=False))
         self.add_item(discord.ui.InputText(label="Color (optional)", placeholder="#11806A", style=discord.InputTextStyle.short, required=False))
 
         if author_id == 1066616669843243048:

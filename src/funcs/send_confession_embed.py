@@ -4,11 +4,18 @@ from views.confession_view import ConfessionView
 
 async def send_confession_embed(self, interaction: discord.Interaction):
     confession = self.children[0].value
-    color_input = self.children[1].value.strip()
-    if len(self.children) > 2:
-        system_message = True if self.children[2].value.lower() == "true" or self.children[2].value.lower() == "yes" else False
+    image_url = self.children[1].value.strip()
+    color_input = self.children[2].value.strip()
+    if len(self.children) > 3:
+        system_message = True if self.children[3].value.lower() == "true" or self.children[3].value.lower() == "yes" else False
     else:
         system_message = False
+        
+    if image_url:
+        try:
+            image_url = image_url if image_url.startswith("http") else None
+        except ValueError:
+            image_url = None
 
     if color_input:
         try:
@@ -43,13 +50,15 @@ async def send_confession_embed(self, interaction: discord.Interaction):
         if not system_message:
             message_embed = discord.Embed(
                 title=f"Anonymous Confession (#{confession_num})",
-                color=color_input
+                color=color_input,
+                image=image_url if image_url else None
             )
             message_embed.add_field(name=confession, value="", inline=False)
         else:
             message_embed = discord.Embed(
                 title=f"System Message (Confession #{confession_num})",
-                color=color_input
+                color=color_input,
+                image=image_url if image_url else None
             )
             message_embed.add_field(name=confession, value="", inline=False)
             message_embed.set_footer(text="This is a system message.")
