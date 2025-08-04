@@ -28,24 +28,49 @@ async def send_confession_embed(self, interaction: discord.Interaction):
     confession_num = await add_confession(interaction.guild.id)
 
     if self.reply_message:
-        if not system_message:
-            message_embed = discord.Embed(
-                title=f"Anonymous Confession (#{confession_num})",
-                color=color_input
-            )
-            message_embed.add_field(name=confession, value="", inline=False)
-            message_embed.add_field(name="",
-                                    value=f"(Reply to [Confession #{self.reply_number}]({self.reply_message.jump_url}))",
-                                    inline=False)
+        if self.reply_number:
+            if not system_message:
+                message_embed = discord.Embed(
+                    title=f"Anonymous Confession (#{confession_num})",
+                    color=color_input,
+                    image=image_url if image_url else None
+                )
+                message_embed.add_field(name=confession, value="", inline=False)
+                message_embed.add_field(name="",
+                                        value=f"(Reply to [Confession #{self.reply_number}]({self.reply_message.jump_url}))",
+                                        inline=False)
+            else:
+                message_embed = discord.Embed(
+                    title=f"System Message (Confession #{confession_num})",
+                    color=color_input,
+                    image=image_url if image_url else None
+                )
+                message_embed.add_field(name=confession, value="", inline=False)
+                message_embed.add_field(name="",
+                                        value=f"(Reply to [Confession #{self.reply_number}]({self.reply_message.jump_url}). This is a system message.)",
+                                        inline=False)
         else:
-            message_embed = discord.Embed(
-                title=f"System Message (Confession #{confession_num})",
-                color=color_input
-            )
-            message_embed.add_field(name=confession, value="", inline=False)
-            message_embed.add_field(name="",
-                                    value=f"(Reply to [Confession #{self.reply_number}]({self.reply_message.jump_url}). This is a system message.)",
-                                    inline=False)
+            if not system_message:
+                message_embed = discord.Embed(
+                    title=f"Anonymous Confession (#{confession_num})",
+                    color=color_input,
+                    image=image_url if image_url else None
+                )
+                message_embed.add_field(name=confession, value="", inline=False)
+                message_embed.add_field(name="",
+                                        value=f"(Reply to [this message]({self.reply_message.jump_url}))",
+                                        inline=False)
+            else:
+                message_embed = discord.Embed(
+                    title=f"System Message (Confession #{confession_num})",
+                    color=color_input,
+                    image=image_url if image_url else None
+                )
+                message_embed.add_field(name=confession, value="", inline=False)
+                message_embed.add_field(name="",
+                                        value=f"(Reply to [this message]({self.reply_message.jump_url}). This is a system message.)",
+                                        inline=False)
+
     else:
         if not system_message:
             message_embed = discord.Embed(
