@@ -10,13 +10,11 @@ class ConfessModal(discord.ui.Modal):
         # noinspection PyTypeChecker
         self.add_item(discord.ui.InputText(label="Your Confession", style=discord.InputTextStyle.long, required=True))
         self.add_item(discord.ui.InputText(label="Image (optional, paste URL)", style=discord.InputTextStyle.short, required=False))
-        if not reply_message or not reply_number:
-            print(reply_message, reply_number)
-            self.add_item(discord.ui.InputText(label="Reply to non-confession message (optional)", placeholder="Paste Message Link",style=discord.InputTextStyle.short, required=False))
         self.add_item(discord.ui.InputText(label="Color (optional)", placeholder="#11806A", style=discord.InputTextStyle.short, required=False))
 
-        if author_id == 1066616669843243048:
-            self.add_item(discord.ui.InputText(label="Send as System Message", style=discord.InputTextStyle.short, required=False))
+        # TODO: FIX
+        # if not reply_message or not reply_number:
+        #     self.add_item(discord.ui.InputText(label="Reply to non-confession message (optional)", placeholder="Paste Message Link",style=discord.InputTextStyle.short, required=False))
 
     async def callback(self, interaction: discord.Interaction):
         await send_confession_embed(self, interaction)

@@ -12,7 +12,7 @@ token = os.getenv("TOKEN")
 async def on_ready():
     await create_db()
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
-    
+
 cogs = [
     'about',
     'confess'
